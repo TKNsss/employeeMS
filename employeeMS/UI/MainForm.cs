@@ -31,7 +31,7 @@ namespace employeeMS
         {
             dashboardBtn.BackColor = Color.FromArgb(255, 194, 14);
             dashboardBtn.ForeColor = Color.Black;
-            dashboardBtn.Image = Image.FromFile("C:\\Users\\FPTSHOP\\OneDrive\\Desktop\\code-career\\cSharp\\employeeMS\\employeeMS\\assets\\db_dark.png");
+            dashboardBtn.Image = Image.FromFile("C:\\Users\\ADMIN\\Desktop\\employeeMS\\employeeMS\\assets\\db_dark.png");
             dashboardBtn.FlatAppearance.BorderSize = 1;
             dashboardBtn.FlatAppearance.BorderColor = Color.FromArgb(255, 194, 14);
         }
@@ -40,7 +40,7 @@ namespace employeeMS
         {
             dashboardBtn.BackColor = Color.Transparent;
             dashboardBtn.ForeColor = Color.White;
-            dashboardBtn.Image = Image.FromFile("C:\\Users\\FPTSHOP\\OneDrive\\Desktop\\code-career\\cSharp\\employeeMS\\employeeMS\\assets\\db_white.png");
+            dashboardBtn.Image = Image.FromFile("C:\\Users\\ADMIN\\Desktop\\employeeMS\\employeeMS\\assets\\db_white.png");
             dashboardBtn.FlatAppearance.BorderSize = 1;
             dashboardBtn.FlatAppearance.BorderColor = Color.White;
         }
@@ -49,7 +49,7 @@ namespace employeeMS
         {
             addEmBtn.BackColor = Color.FromArgb(255, 194, 14);
             addEmBtn.ForeColor = Color.Black;
-            addEmBtn.Image = Image.FromFile("C:\\Users\\FPTSHOP\\OneDrive\\Desktop\\code-career\\cSharp\\employeeMS\\employeeMS\\assets\\em_dark.png");
+            addEmBtn.Image = Image.FromFile("C:\\Users\\ADMIN\\Desktop\\employeeMS\\employeeMS\\assets\\em_dark.png");
             addEmBtn.FlatAppearance.BorderSize = 1;
             addEmBtn.FlatAppearance.BorderColor = Color.FromArgb(255, 194, 14);
         }
@@ -58,7 +58,7 @@ namespace employeeMS
         {
             addEmBtn.BackColor = Color.Transparent;
             addEmBtn.ForeColor = Color.White;
-            addEmBtn.Image = Image.FromFile("C:\\Users\\FPTSHOP\\OneDrive\\Desktop\\code-career\\cSharp\\employeeMS\\employeeMS\\assets\\em_white.png");
+            addEmBtn.Image = Image.FromFile("C:\\Users\\ADMIN\\Desktop\\employeeMS\\employeeMS\\assets\\em_white.png");
             addEmBtn.FlatAppearance.BorderSize = 1;
             addEmBtn.FlatAppearance.BorderColor = Color.White;
         }
@@ -67,7 +67,7 @@ namespace employeeMS
         {
             salaryBtn.BackColor = Color.FromArgb(255, 194, 14);
             salaryBtn.ForeColor = Color.Black;
-            salaryBtn.Image = Image.FromFile("C:\\Users\\FPTSHOP\\OneDrive\\Desktop\\code-career\\cSharp\\employeeMS\\employeeMS\\assets\\salary_dark.png");
+            salaryBtn.Image = Image.FromFile("C:\\Users\\ADMIN\\Desktop\\employeeMS\\employeeMS\\assets\\salary_dark.png");
             salaryBtn.FlatAppearance.BorderSize = 1;
             salaryBtn.FlatAppearance.BorderColor = Color.FromArgb(255, 194, 14);
         }
@@ -76,7 +76,7 @@ namespace employeeMS
         {
             salaryBtn.BackColor = Color.Transparent;
             salaryBtn.ForeColor = Color.White;
-            salaryBtn.Image = Image.FromFile("C:\\Users\\FPTSHOP\\OneDrive\\Desktop\\code-career\\cSharp\\employeeMS\\employeeMS\\assets\\salary_white.png");
+            salaryBtn.Image = Image.FromFile("C:\\Users\\ADMIN\\Desktop\\employeeMS\\employeeMS\\assets\\salary_white.png");
             salaryBtn.FlatAppearance.BorderSize = 1;
             salaryBtn.FlatAppearance.BorderColor = Color.White;
         }

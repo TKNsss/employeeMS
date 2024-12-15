@@ -12,7 +12,7 @@ namespace employeeMS.DAO
 {
     internal class SalaryDAO
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=MRKIM08\SQLEXPRESS;Initial Catalog=employeeMS;Integrated Security=True;TrustServerCertificate=True");
+        SqlConnection connect = new SqlConnection(@"Data Source=HE-HE-HE;Initial Catalog=EmployeeMS;Integrated Security=True;TrustServerCertificate=True");
         public int SalId { get; set; }
         public string EmId { get; set; }
         public string FirstName { get; set; }
@@ -34,8 +34,7 @@ namespace employeeMS.DAO
                 {
                     connect.Open();
                 }
-                string query = @"SELECT sal.sal_id, sal.em_id, firstname, lastname, 
-                             sal.work_day, sal.month, sal.year, 
+                string query = @"SELECT sal.sal_id, sal.em_id, firstname, lastname,                             sal.work_day, sal.month, sal.year, 
                              sal.base_salary, sal.net_salary, sal.month_salary
                              FROM Salaries AS sal
                              JOIN Employees AS em ON sal.em_id = em.em_id";

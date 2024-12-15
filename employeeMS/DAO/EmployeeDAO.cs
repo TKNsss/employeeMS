@@ -13,7 +13,7 @@ namespace employeeMS
 {
     internal class EmployeeDAO
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=MRKIM08\SQLEXPRESS;Initial Catalog=employeeMS;Integrated Security=True;TrustServerCertificate=True"); 
+        SqlConnection connect = new SqlConnection(@"Data Source=HE-HE-HE;Initial Catalog=EmployeeMS;Integrated Security=True;TrustServerCertificate=True"); 
         public string ID { set; get; }
         public string Firstname { set; get; }
         public string Lastname { set; get; }

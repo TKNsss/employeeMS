@@ -11,7 +11,7 @@ namespace employeeMS.DAO
 {
     internal class AdminDAO
     {
-        const string connectionString = @"Data Source=MRKIM08\SQLEXPRESS;Initial Catalog=employeeMS;Integrated Security=True;TrustServerCertificate=True";
+        const string connectionString = @"Data Source=HE-HE-HE;Initial Catalog=EmployeeMS;Integrated Security=True;TrustServerCertificate=True";
         SqlConnection connect = new SqlConnection(connectionString);
         public AdminDAO() { }
         public int ID { set; get; }

@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -42,6 +45,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.totalEm = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnLoadChart = new System.Windows.Forms.Button();
+            this.cmbEmployeeID = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -49,6 +56,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -192,10 +201,59 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.cmbEmployeeID);
+            this.panel2.Controls.Add(this.btnLoadChart);
+            this.panel2.Controls.Add(this.chart1);
             this.panel2.Location = new System.Drawing.Point(13, 297);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1070, 442);
             this.panel2.TabIndex = 0;
+            // 
+            // chart1
+            // 
+            chartArea5.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chart1.Legends.Add(legend5);
+            this.chart1.Location = new System.Drawing.Point(3, 3);
+            this.chart1.Name = "chart1";
+            series5.ChartArea = "ChartArea1";
+            series5.IsValueShownAsLabel = true;
+            series5.Legend = "Legend1";
+            series5.Name = "Salary";
+            this.chart1.Series.Add(series5);
+            this.chart1.Size = new System.Drawing.Size(1062, 434);
+            this.chart1.TabIndex = 0;
+            this.chart1.Text = "chart1";
+            // 
+            // btnLoadChart
+            // 
+            this.btnLoadChart.Location = new System.Drawing.Point(973, 414);
+            this.btnLoadChart.Name = "btnLoadChart";
+            this.btnLoadChart.Size = new System.Drawing.Size(92, 23);
+            this.btnLoadChart.TabIndex = 1;
+            this.btnLoadChart.Text = "Load Chart";
+            this.btnLoadChart.UseVisualStyleBackColor = true;
+            this.btnLoadChart.Click += new System.EventHandler(this.btnLoadChart_Click);
+            // 
+            // cmbEmployeeID
+            // 
+            this.cmbEmployeeID.FormattingEnabled = true;
+            this.cmbEmployeeID.Location = new System.Drawing.Point(944, 384);
+            this.cmbEmployeeID.Name = "cmbEmployeeID";
+            this.cmbEmployeeID.Size = new System.Drawing.Size(121, 24);
+            this.cmbEmployeeID.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(941, 365);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(126, 16);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Select employee id:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // DashboardForm
             // 
@@ -216,6 +274,9 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -236,5 +297,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.ComboBox cmbEmployeeID;
+        private System.Windows.Forms.Button btnLoadChart;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -12,7 +12,7 @@ namespace employeeMS.DAO
 {
     internal class RoleDAO
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=MRKIM08\SQLEXPRESS;Initial Catalog=employeeMS;Integrated Security=True;TrustServerCertificate=True");
+        SqlConnection connect = new SqlConnection(@"Data Source=HE-HE-HE;Initial Catalog=EmployeeMS;Integrated Security=True;TrustServerCertificate=True");
         public int RoleID { get; set; }
         public string EmID { get; set; }
         public string RoleName { get; set; }
