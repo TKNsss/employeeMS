@@ -4,14 +4,12 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using employeeMS.Utils;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace employeeMS.DAO
 {
     internal class AdminDAO
     {
-        const string connectionString = @"Data Source=HE-HE-HE;Initial Catalog=EmployeeMS;Integrated Security=True;TrustServerCertificate=True";
+        const string connectionString = @"Data Source=MRKIM08\SQLEXPRESS;Initial Catalog=employeeMS;Integrated Security=True;TrustServerCertificate=True";
         SqlConnection connect = new SqlConnection(connectionString);
         public AdminDAO() { }
         public int ID { set; get; }
@@ -19,31 +17,17 @@ namespace employeeMS.DAO
         public string Email { set; get; }
         public string AdminPassword { set; get; }
 
-        public AdminDAO GetAdminByCredentials(string identifier, string identifierType)
+        public AdminDAO GetAdminByCredentials(string username)
         {
             try
             {
                 connect.Open();
 
-                // Determine the query based on the identifier type
-                string query;
-
-                if (identifierType.Equals("email"))
-                {
-                    query = "SELECT * FROM Admins WHERE email = @identifier";
-                }
-                else if (identifierType.Equals("username", StringComparison.OrdinalIgnoreCase))
-                {
-                    query = "SELECT * FROM Admins WHERE username = @identifier";
-                }
-                else
-                {
-                    throw new ArgumentException("Invalid identifier type. Use 'email' or 'username'.");
-                }
+                string query = "SELECT * FROM Admins WHERE username = @username"; ;  
 
                 using (SqlCommand cmd = new SqlCommand(query, connect))
                 {
-                    cmd.Parameters.AddWithValue("@identifier", identifier);
+                    cmd.Parameters.AddWithValue("@username", username);
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -51,7 +35,7 @@ namespace employeeMS.DAO
                         {    
                             return new AdminDAO
                             {
-                                ID = Convert.ToInt32(reader["ad_id"]),
+                                ID = (int)reader["ad_id"],
                                 AdminName = reader["username"].ToString(),
                                 Email = reader["email"].ToString(),
                                 AdminPassword = reader["password"].ToString()

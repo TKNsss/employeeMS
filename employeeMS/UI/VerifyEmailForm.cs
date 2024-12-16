@@ -44,13 +44,14 @@ namespace employeeMS.UI
             }
             string from = "nguyenkimto2004@gmail.com"; // your email goes here (sender)
 
-            // generate random code (1000-9999) for verificationr
+            // generate random code (1000-9999) for verification
             Random rnd = new Random();
             vCode = rnd.Next(1000, 10000);
+
             string mail = vCode.ToString();
 
             // OS environment variable
-            string pw = Environment.GetEnvironmentVariable("EMAIL_APP_PASSWORD");// your app password goes here
+            string pw = Environment.GetEnvironmentVariable("EMAIL_APP_PASSWORD"); // your app password goes here
             MailMessage msg = new MailMessage();    
             msg.To.Add(to); // directly send message to email typed in the input
             msg.From = new MailAddress(from); // create sender

@@ -13,7 +13,7 @@ using System.Windows.Forms;
 namespace employeeMS
 {
     public partial class AddEmployeeForm : UserControl
-    { 
+    {
         public AddEmployeeForm()
         {
             InitializeComponent();
@@ -26,7 +26,7 @@ namespace employeeMS
         private void DisplayEmployeeData()
         {
             try
-            {
+            {  
                 EmployeeDAO emDAO = new EmployeeDAO();
                 List<EmployeeDAO> emList = emDAO.GetEmployeeData();
 
@@ -127,7 +127,6 @@ namespace employeeMS
                     MessageBox.Show(sb.ToString(), "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
                 string emId = emIdTB.Text.Trim();
 
                 // Check the length of Employee ID
@@ -251,6 +250,15 @@ namespace employeeMS
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
+            // Check if a row is selected in the DataGridView 
+            int selectedRow = emGridData.CurrentRow?.Index ?? -1;
+
+            if (selectedRow < 0)
+            {
+                MessageBox.Show("Please select a row to update!", "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             try
             {
                 StringBuilder sb = new StringBuilder();
@@ -304,8 +312,7 @@ namespace employeeMS
                     RoleName = role
                 };
                 emDAO.UpdateEmployeeData(employee, newRole);
-                DisplayEmployeeData(); // Update the employee table
-                //LoadDataIntoSalaryTable(); // Update the salary table
+                DisplayEmployeeData(); // Update the employee table         
 
                 // Clear input fields
                 ClearFields();
@@ -391,7 +398,7 @@ namespace employeeMS
                     ? ExcelReaderFactory.CreateBinaryReader(stream) // For .xls
                     : ExcelReaderFactory.CreateOpenXmlReader(stream); // For .xlsx
 
-                //R eads the Excel file and converts it into a DataSet.
+                // Reads the Excel file and converts it into a DataSet.
                 var result = reader.AsDataSet(new ExcelDataSetConfiguration
                 {
                     ConfigureDataTable = (_) => new ExcelDataTableConfiguration
@@ -449,9 +456,11 @@ namespace employeeMS
                         for (int row = 0; row < emGridData.Rows.Count; row++)
                         {
                             if (emGridData.Rows[row].IsNewRow) continue; // Skip the new empty row
+                           
                             for (int col = 0; col < emGridData.Columns.Count; col++)
                             {
                                 var cellValue = emGridData.Rows[row].Cells[col].Value;
+                                
                                 if (cellValue != null)
                                 {
                                     worksheet.Cells[row + 2, col + 1].Value = cellValue.ToString(); // Write data
@@ -465,6 +474,11 @@ namespace employeeMS
                     MessageBox.Show("Data exported successfully as Excel.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+        }
+
+        private void emIdTB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validator.CheckContentSpaces(e);
         }
     }
 }

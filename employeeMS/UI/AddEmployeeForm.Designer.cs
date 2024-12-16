@@ -47,6 +47,7 @@
             this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.exportBtn = new System.Windows.Forms.Button();
             this.importBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.clearBtn = new System.Windows.Forms.Button();
@@ -70,7 +71,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.exportBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emGridData)).BeginInit();
@@ -277,6 +277,25 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1074, 382);
             this.panel2.TabIndex = 1;
+            // 
+            // exportBtn
+            // 
+            this.exportBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(61)))), ((int)(((byte)(144)))));
+            this.exportBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.exportBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.CornflowerBlue;
+            this.exportBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
+            this.exportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.exportBtn.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exportBtn.ForeColor = System.Drawing.Color.White;
+            this.exportBtn.Image = ((System.Drawing.Image)(resources.GetObject("exportBtn.Image")));
+            this.exportBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.exportBtn.Location = new System.Drawing.Point(768, 313);
+            this.exportBtn.Name = "exportBtn";
+            this.exportBtn.Size = new System.Drawing.Size(154, 38);
+            this.exportBtn.TabIndex = 8;
+            this.exportBtn.Text = "Export";
+            this.exportBtn.UseVisualStyleBackColor = false;
+            this.exportBtn.Click += new System.EventHandler(this.exportBtn_Click);
             // 
             // importBtn
             // 
@@ -519,6 +538,7 @@
             this.emIdTB.Name = "emIdTB";
             this.emIdTB.Size = new System.Drawing.Size(208, 35);
             this.emIdTB.TabIndex = 1;
+            this.emIdTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.emIdTB_KeyPress);
             // 
             // label11
             // 
@@ -609,25 +629,6 @@
             this.label3.Size = new System.Drawing.Size(149, 28);
             this.label3.TabIndex = 0;
             this.label3.Text = "Employee ID:";
-            // 
-            // exportBtn
-            // 
-            this.exportBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(61)))), ((int)(((byte)(144)))));
-            this.exportBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.exportBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.CornflowerBlue;
-            this.exportBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
-            this.exportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.exportBtn.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exportBtn.ForeColor = System.Drawing.Color.White;
-            this.exportBtn.Image = ((System.Drawing.Image)(resources.GetObject("exportBtn.Image")));
-            this.exportBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.exportBtn.Location = new System.Drawing.Point(768, 313);
-            this.exportBtn.Name = "exportBtn";
-            this.exportBtn.Size = new System.Drawing.Size(154, 38);
-            this.exportBtn.TabIndex = 8;
-            this.exportBtn.Text = "Export";
-            this.exportBtn.UseVisualStyleBackColor = false;
-            this.exportBtn.Click += new System.EventHandler(this.exportBtn_Click);
             // 
             // AddEmployeeForm
             // 

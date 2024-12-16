@@ -6,7 +6,6 @@ using System.Windows.Forms.DataVisualization.Charting;
 using employeeMS.DAO;
 using employeeMS.UI;
 
-
 namespace employeeMS
 {
     public partial class DashboardForm : UserControl
@@ -15,8 +14,9 @@ namespace employeeMS
         private int currentPanelIndex = 0; // 0: Panel biểu đồ cột, 1: Panel biểu đồ đường
 
         // Chuỗi kết nối đến SQL Server
-        private string connectionString = @"Data Source=HE-HE-HE;Initial Catalog=EmployeeMS;Integrated Security=True;TrustServerCertificate=True";
+        private string connectionString = @"Data Source=MRKIM08\SQLEXPRESS;Initial Catalog=employeeMS;Integrated Security=True;TrustServerCertificate=True";
         private EmployeeDAO emDAO = new EmployeeDAO();
+
         public DashboardForm()
         {
             InitializeComponent();
@@ -31,6 +31,8 @@ namespace employeeMS
 
             LoadEmployeeIDs(); // Tải danh sách ID nhân viên vào ComboBox
             LoadEmployeeIDsLine();
+            emDAO = new EmployeeDAO();
+
             totalEm.Text = emDAO.DisplayTotalEmployee().ToString();
             totalStaff.Text = emDAO.DisplayTotalRoleMember("Staff").ToString();
             totalLeader.Text = emDAO.DisplayTotalRoleMember("Leader").ToString();
@@ -41,10 +43,8 @@ namespace employeeMS
             // Làm mới ComboBox
             LoadEmployeeIDs();  // Gọi phương thức để cập nhật lại ComboBox với dữ liệu mới
             LoadEmployeeIDsLine();
-
             // timer.Stop();  // Dừng Timer nếu không muốn tiếp tục đếm
         }
-
 
         private void LoadEmployeeIDs() // Lấy em_id từ cơ sở dữ liệu và đưa vào ComboBox
         {
@@ -72,7 +72,6 @@ namespace employeeMS
                 }
             }
         }
-
 
         private void LoadEmployeeIDsLine() // Lấy em_id từ cơ sở dữ liệu và đưa vào ComboBox cho Biểu Đồ Đường
         {
@@ -204,7 +203,6 @@ namespace employeeMS
             chart2.Titles.Clear();
             chart2.Titles.Add($"Biểu Đồ Đường: Ngày Công của NV - {employeeID}");
         }
-
         private DataTable GetAttendanceData(string employeeID)
         {
             DataTable dataTable = new DataTable();
@@ -240,7 +238,6 @@ namespace employeeMS
             return dataTable;
         }
 
-
         private void btnLoadChart_Click(object sender, EventArgs e)
         {
             if (cmbEmployeeID.SelectedItem != null)
@@ -268,7 +265,6 @@ namespace employeeMS
             ReloadData();
             panelLineChart.Visible = false;
         }
-
 
         // Reload Data và cập nhật các biểu đồ
         public void ReloadData()
@@ -312,6 +308,5 @@ namespace employeeMS
             LoadEmployeeIDs();      // Cập nhật ComboBox cho biểu đồ lương
             LoadEmployeeIDsLine();  // Cập nhật ComboBox cho biểu đồ đường
         }
-
     }
 }

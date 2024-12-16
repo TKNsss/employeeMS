@@ -151,6 +151,7 @@
             // backToLGFormBtn
             // 
             this.backToLGFormBtn.BackColor = System.Drawing.Color.Transparent;
+            this.backToLGFormBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.backToLGFormBtn.FlatAppearance.BorderSize = 0;
             this.backToLGFormBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backToLGFormBtn.Image = ((System.Drawing.Image)(resources.GetObject("backToLGFormBtn.Image")));

@@ -34,7 +34,7 @@ namespace employeeMS
             try
             {
                 AdminDAO adDAO = new AdminDAO();
-                adDAO = adDAO.GetAdminByCredentials(username, "username");
+                adDAO = adDAO.GetAdminByCredentials(username);
 
                 if (adDAO == null || !BCrypt.Net.BCrypt.Verify(password, adDAO.AdminPassword))
                 {
@@ -45,8 +45,10 @@ namespace employeeMS
                 // open mainform
                 LoginForm lf = (LoginForm)this.FindForm();
                 lf.Visible = false;
-                MainForm mf = new MainForm(adDAO.AdminName);   
-                mf.Visible = true;
+                MainForm mf = new MainForm(adDAO.AdminName)
+                {
+                    Visible = true
+                };
             }
             catch (Exception ex)
             {

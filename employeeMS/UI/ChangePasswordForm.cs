@@ -66,13 +66,11 @@ namespace employeeMS.UI
                 LoginForm lf = (LoginForm)this.FindForm();
                 string cPwEmail = lf.vfForm.vEmail;
 
-                AdminDAO adDAO = new AdminDAO();
-                adDAO = adDAO.GetAdminByCredentials(cPwEmail, "email");
-
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(newPw);
 
+                AdminDAO adDAO = new AdminDAO();
                 adDAO.UpdatePassword(hashedPassword, cPwEmail);
-                MessageBox.Show(adDAO.AdminName + "'s password updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Password updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 newPwTB.Text = "";
                 cfNewPwTB.Text = "";

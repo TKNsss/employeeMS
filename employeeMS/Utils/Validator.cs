@@ -102,7 +102,7 @@ namespace employeeMS.Utils
             }
             string phoneNumber = tb.Text.Trim();
 
-            if (phoneNumber.Length != 10 && !Regex.IsMatch(phoneNumber , "^\\+\\d{1,3}[- ]?\\d{10}$"))
+            if (phoneNumber.Length != 10 && !Regex.IsMatch(phoneNumber, "^\\+\\d{1,3}[- ]?\\d{10}$"))
             {
                 sb.Append("Phone number must be 10 digits long or in the format +[country code]-XXXXXXXXXX!\n");
                 tb.BackColor = ColorTranslator.FromHtml("#FFCDD2");
@@ -202,7 +202,6 @@ namespace employeeMS.Utils
             tf.BackColor = Color.White;
             return true; 
         }
-
 
         public static void PrintSQLExceptionError(SqlException e)
         {

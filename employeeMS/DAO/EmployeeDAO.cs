@@ -13,7 +13,8 @@ namespace employeeMS
 {
     internal class EmployeeDAO
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=HE-HE-HE;Initial Catalog=EmployeeMS;Integrated Security=True;TrustServerCertificate=True"); 
+        SqlConnection connect = new SqlConnection(@"Data Source=MRKIM08\SQLEXPRESS;Initial Catalog=employeeMS;Integrated Security=True;TrustServerCertificate=True");
+
         public string ID { set; get; }
         public string Firstname { set; get; }
         public string Lastname { set; get; }
@@ -27,7 +28,8 @@ namespace employeeMS
         public float NetSalary { set; get; }
         public float AllowanceLevel { set; get; }
         public float CoefLevel { set; get; }
-        public int PositionID {  set; get; }
+        public int PositionID { set; get; }
+        public EmployeeDAO() {}
 
         public int DisplayTotalEmployee()
         {
@@ -39,15 +41,15 @@ namespace employeeMS
                 {
                     connect.Open();
                 }
-                string sql = "SELECT COUNT(*) AS totalEmployees FROM Employees";
+                string query = "SELECT COUNT(*) AS totalEmployees FROM Employees";
 
-                using (SqlCommand command = new SqlCommand(sql, connect))
+                using (SqlCommand cmd = new SqlCommand(query, connect))
                 {
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
                         {
-                            totalCount = reader.GetInt32(reader.GetOrdinal("totalEmployees"));
+                            totalCount = (int)reader["totalEmployees"];
                         }
                     }
                 }             
@@ -77,17 +79,17 @@ namespace employeeMS
                 {
                     connect.Open();
                 }
-                string sql = "SELECT COUNT(*) AS totalRoleMember FROM Roles WHERE role_name = @roleName";
+                string query = "SELECT COUNT(*) AS totalRoleMember FROM Roles WHERE role_name = @roleName";
 
-                using (SqlCommand command = new SqlCommand(sql, connect))
+                using (SqlCommand cmd = new SqlCommand(query, connect))
                 {
-                    command.Parameters.AddWithValue("@roleName", roleName);
+                    cmd.Parameters.AddWithValue("@roleName", roleName);
 
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
                         {
-                            totalCount = reader.GetInt32(reader.GetOrdinal("totalRoleMember"));
+                            totalCount = (int)reader["totalRoleMember"];
                         }
                     }
                 }
@@ -221,7 +223,6 @@ namespace employeeMS
 
                             cmd2.ExecuteNonQuery();
                         }
-
 
                         // Commit the transaction
                         transaction.Commit();
@@ -553,7 +554,6 @@ namespace employeeMS
                         MessageBox.Show($"Invalid em_id detected: {emID}. Skipping this record.", "Invalid Record", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         continue; // Skip the current row and move to the next one
                     }
-                    string phone = row["phone"].ToString();
 
                     // Check for duplicate em_id
                     if (IsIDExists(emID))
@@ -561,6 +561,7 @@ namespace employeeMS
                         MessageBox.Show($"Duplicate em_id detected: {emID}. Skipping this record.", "Duplicate Record", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         continue; // Skip the current row and move to the next one
                     }
+                    string phone = row["phone"].ToString();
 
                     // Check for duplicate phone
                     if (IsPhoneExists(phone, emID))
