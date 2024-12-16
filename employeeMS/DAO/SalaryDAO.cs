@@ -121,6 +121,7 @@ namespace employeeMS.DAO
 
                         // Commit transaction
                         transaction.Commit();
+
                         MessageBox.Show("Salary updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (SqlException ex)
@@ -189,6 +190,7 @@ namespace employeeMS.DAO
                         }
                         // Commit transaction
                         transaction.Commit();
+
                         MessageBox.Show("Salary inserted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (SqlException ex)

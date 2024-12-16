@@ -238,7 +238,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(942, 366);
+            this.label4.Location = new System.Drawing.Point(942, 175);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(126, 16);
             this.label4.TabIndex = 6;
@@ -247,14 +247,14 @@
             // cmbEmployeeIDLine
             // 
             this.cmbEmployeeIDLine.FormattingEnabled = true;
-            this.cmbEmployeeIDLine.Location = new System.Drawing.Point(945, 385);
+            this.cmbEmployeeIDLine.Location = new System.Drawing.Point(945, 194);
             this.cmbEmployeeIDLine.Name = "cmbEmployeeIDLine";
             this.cmbEmployeeIDLine.Size = new System.Drawing.Size(121, 24);
             this.cmbEmployeeIDLine.TabIndex = 5;
             // 
             // btnLoadLineChart
             // 
-            this.btnLoadLineChart.Location = new System.Drawing.Point(974, 415);
+            this.btnLoadLineChart.Location = new System.Drawing.Point(974, 224);
             this.btnLoadLineChart.Name = "btnLoadLineChart";
             this.btnLoadLineChart.Size = new System.Drawing.Size(92, 23);
             this.btnLoadLineChart.TabIndex = 4;
@@ -268,20 +268,20 @@
             this.chart2.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart2.Legends.Add(legend1);
-            this.chart2.Location = new System.Drawing.Point(4, 0);
+            this.chart2.Location = new System.Drawing.Point(4, 3);
             this.chart2.Name = "chart2";
             series1.ChartArea = "ChartArea1";
             series1.IsValueShownAsLabel = true;
             series1.Legend = "Legend1";
             series1.Name = "WorkDay";
             this.chart2.Series.Add(series1);
-            this.chart2.Size = new System.Drawing.Size(1062, 438);
+            this.chart2.Size = new System.Drawing.Size(1062, 435);
             this.chart2.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(941, 365);
+            this.label2.Location = new System.Drawing.Point(943, 149);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(126, 16);
             this.label2.TabIndex = 3;
@@ -290,14 +290,14 @@
             // cmbEmployeeID
             // 
             this.cmbEmployeeID.FormattingEnabled = true;
-            this.cmbEmployeeID.Location = new System.Drawing.Point(944, 384);
+            this.cmbEmployeeID.Location = new System.Drawing.Point(946, 168);
             this.cmbEmployeeID.Name = "cmbEmployeeID";
             this.cmbEmployeeID.Size = new System.Drawing.Size(121, 24);
             this.cmbEmployeeID.TabIndex = 2;
             // 
             // btnLoadChart
             // 
-            this.btnLoadChart.Location = new System.Drawing.Point(973, 414);
+            this.btnLoadChart.Location = new System.Drawing.Point(975, 198);
             this.btnLoadChart.Name = "btnLoadChart";
             this.btnLoadChart.Size = new System.Drawing.Size(92, 23);
             this.btnLoadChart.TabIndex = 1;
@@ -318,7 +318,7 @@
             series2.Legend = "Legend1";
             series2.Name = "Salary";
             this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(1062, 434);
+            this.chart1.Size = new System.Drawing.Size(1062, 438);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 

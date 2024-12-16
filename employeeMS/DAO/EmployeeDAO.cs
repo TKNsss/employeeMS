@@ -175,6 +175,8 @@ namespace employeeMS
             return listData;
         }
 
+        public event Action EmployeeDataChanged;
+
         public void AddEmployeeData(EmployeeDAO em, RoleDAO RoleObj)
         {     
             if (IsPhoneExists(em.Phone, null) || IsIDExists(em.ID))
@@ -220,9 +222,11 @@ namespace employeeMS
                             cmd2.ExecuteNonQuery();
                         }
 
+
                         // Commit the transaction
                         transaction.Commit();
                         MessageBox.Show("Employee added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        EmployeeDataChanged?.Invoke();
                     }
                     catch (SqlException ex)
                     {
@@ -381,6 +385,7 @@ namespace employeeMS
                         // Commit transaction if everything succeeds
                         transaction.Commit();
                         MessageBox.Show("Employee and related data deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        EmployeeDataChanged?.Invoke();
                     }
                     catch (SqlException ex)
                     {

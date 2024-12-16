@@ -3,20 +3,31 @@ using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms.DataVisualization.Charting;
+using employeeMS.DAO;
+using employeeMS.UI;
+
 
 namespace employeeMS
 {
     public partial class DashboardForm : UserControl
     {
+        private System.Windows.Forms.Timer timer;
         private int currentPanelIndex = 0; // 0: Panel biểu đồ cột, 1: Panel biểu đồ đường
 
         // Chuỗi kết nối đến SQL Server
         private string connectionString = @"Data Source=HE-HE-HE;Initial Catalog=EmployeeMS;Integrated Security=True;TrustServerCertificate=True";
         private EmployeeDAO emDAO = new EmployeeDAO();
-
         public DashboardForm()
         {
             InitializeComponent();
+
+            // Khởi tạo Timer
+            timer = new System.Windows.Forms.Timer();
+            timer.Interval = 2000;  // 2 giây
+            timer.Tick += Timer_Tick;  // Đăng ký sự kiện khi timer hết thời gian
+
+            // Khởi động Timer khi form mở
+            timer.Start();
 
             LoadEmployeeIDs(); // Tải danh sách ID nhân viên vào ComboBox
             LoadEmployeeIDsLine();
@@ -25,9 +36,19 @@ namespace employeeMS
             totalLeader.Text = emDAO.DisplayTotalRoleMember("Leader").ToString();
         }
 
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Làm mới ComboBox
+            LoadEmployeeIDs();  // Gọi phương thức để cập nhật lại ComboBox với dữ liệu mới
+            LoadEmployeeIDsLine();
+
+            // timer.Stop();  // Dừng Timer nếu không muốn tiếp tục đếm
+        }
+
+
         private void LoadEmployeeIDs() // Lấy em_id từ cơ sở dữ liệu và đưa vào ComboBox
         {
-            DataTable dataTable = new DataTable();
+            cmbEmployeeID.Items.Clear();  // Làm sạch ComboBox trước khi thêm dữ liệu mới
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -37,24 +58,25 @@ namespace employeeMS
                     string query = "SELECT DISTINCT em_id FROM Salaries ORDER BY em_id";
                     SqlCommand command = new SqlCommand(query, connection);
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
 
-                    cmbEmployeeID.Items.Clear();
                     foreach (DataRow row in dataTable.Rows)
                     {
-                        cmbEmployeeID.Items.Add(row["em_id"].ToString());
+                        cmbEmployeeID.Items.Add(row["em_id"].ToString());  // Thêm các em_id vào ComboBox
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi khi tải danh sách nhân viên: " + ex.Message);
+                    MessageBox.Show("Error fetching employee data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
+
         private void LoadEmployeeIDsLine() // Lấy em_id từ cơ sở dữ liệu và đưa vào ComboBox cho Biểu Đồ Đường
         {
-            DataTable dataTable = new DataTable();
+            cmbEmployeeIDLine.Items.Clear();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -64,9 +86,9 @@ namespace employeeMS
                     string query = "SELECT DISTINCT em_id FROM Salaries ORDER BY em_id";
                     SqlCommand command = new SqlCommand(query, connection);
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
 
-                    cmbEmployeeIDLine.Items.Clear();
                     foreach (DataRow row in dataTable.Rows)
                     {
                         cmbEmployeeIDLine.Items.Add(row["em_id"].ToString());
@@ -74,7 +96,7 @@ namespace employeeMS
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi khi tải danh sách nhân viên: " + ex.Message);
+                    MessageBox.Show("Error fetching employee data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -285,5 +307,11 @@ namespace employeeMS
                 MessageBox.Show("Vui lòng chọn mã nhân viên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        private void RefreshComboBoxData()
+        {
+            LoadEmployeeIDs();      // Cập nhật ComboBox cho biểu đồ lương
+            LoadEmployeeIDsLine();  // Cập nhật ComboBox cho biểu đồ đường
+        }
+
     }
 }

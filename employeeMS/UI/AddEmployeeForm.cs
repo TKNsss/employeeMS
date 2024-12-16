@@ -88,7 +88,8 @@ namespace employeeMS
                         emDAO.DeleteEmployee(emID, roleID); // Call the delete method
 
                         // Refresh data in the table
-                        DisplayEmployeeData();           
+                        DisplayEmployeeData();
+                        
                     }
                     catch (Exception ex)
                     {
